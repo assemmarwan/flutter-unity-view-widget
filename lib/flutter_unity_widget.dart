@@ -11,16 +11,18 @@ class UnityWidgetController {
   final MethodChannel channel;
 
   UnityWidgetController._(
-      this.channel,
-      this._unityWidgetState,
-      ) {
+    this.channel,
+    this._unityWidgetState,
+  ) {
     channel.setMethodCallHandler(_handleMethod);
   }
 
-  static UnityWidgetController init(int id, _UnityWidgetState unityWidgetState) {
+  static UnityWidgetController init(
+      int id, _UnityWidgetState unityWidgetState) {
     final MethodChannel channel = MethodChannel('unity_view_$id');
     return UnityWidgetController._(
-      channel, unityWidgetState,
+      channel,
+      unityWidgetState,
     );
   }
 
@@ -49,6 +51,10 @@ class UnityWidgetController {
 
   resume() async {
     await channel.invokeMethod('resume');
+  }
+
+  unload() async {
+    await channel.invokeMethod('unload');
   }
 
   Future<void> _dispose() async {
@@ -80,7 +86,10 @@ class UnityWidget extends StatefulWidget {
   final bool isARScene;
 
   UnityWidget(
-      {Key key, @required this.onUnityViewCreated, this.onUnityMessage, this.isARScene = false});
+      {Key key,
+      @required this.onUnityViewCreated,
+      this.onUnityMessage,
+      this.isARScene = false});
 
   @override
   _UnityWidgetState createState() => _UnityWidgetState();

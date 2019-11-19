@@ -75,6 +75,10 @@ public class FlutterUnityView implements PlatformView, MethodChannel.MethodCallH
                 UnityUtils.resume();
                 result.success(true);
                 break;
+            case "unload":
+                UnityUtils.unload();
+                result.success(true);
+                break;
             default:
                 result.notImplemented();
         }

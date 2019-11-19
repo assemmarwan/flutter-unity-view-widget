@@ -93,6 +93,13 @@ public class UnityUtils {
         }
     }
 
+    public static void unload(){
+        if(unityPlayer!=null){
+            unityPlayer.unload();
+            _isUnityPaused = true;
+        }
+    }
+
     /**
      * Invoke by unity C#
      */
