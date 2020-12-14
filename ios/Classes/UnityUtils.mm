@@ -142,6 +142,7 @@ static BOOL _isUnityReady = NO;
     if (UnityIsInited() || player_created) {
         return;
     }
+    player_created = true;
 
     dispatch_async(dispatch_get_main_queue(), ^{
         UIApplication* application = [UIApplication sharedApplication];
