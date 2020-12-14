@@ -10,6 +10,7 @@
 static const int constsection = 0;
 
 bool unity_inited = false;
+static bool player_created = false;
 
 int g_argc;
 char** g_argv;
@@ -138,7 +139,7 @@ static BOOL _isUnityReady = NO;
         completed();
     }];
 
-    if (UnityIsInited()) {
+    if (UnityIsInited() || player_created) {
         return;
     }
 
